@@ -3,7 +3,13 @@ FROM ubuntu:22.04
 RUN \
     apt update -y && \
     \
-    apt install -y --fix-missing --no-install-recommends\
+    export DEBIAN_FRONTEND=noninteractive && \
+    ln -fs /usr/share/zoneinfo/Europe/Helsini /etc/localtime && \
+    \
+    apt install -y tzdata && \
+    dpkg-reconfigure -f noninteractive tzdata && \
+    \
+    apt install -y --fix-missing --no-install-recommends \
     \
         ansible \
         git \
