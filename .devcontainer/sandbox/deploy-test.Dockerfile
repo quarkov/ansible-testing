@@ -6,4 +6,11 @@ RUN \
     apt install -y --fix-missing --no-install-recommends\
     \
         ansible \
-        python3
+        git \
+        locales \
+        python3 \
+        python3-pip
+
+RUN \
+    python3 -m pip install \
+        molecule
